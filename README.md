@@ -39,25 +39,16 @@ No app to download. No forms to fill. Just a WhatsApp chat.
 
 ## ⚙️ How It Works
 
-```mermaid
-flowchart LR
-    A[WhatsApp Trigger] --> B[AI Agent]
-    B --> C[Gemini Chat Model]
-    B --> D[Simple Memory]
-    B --> E[Inventory Check]
-    B --> F[FAQ Retrieval]
-    B --> G[Order Processing]
-    G --> H[WhatsApp Response]
-```
+![Workflow Architecture](./workflow.png)
 
-1. **WhatsApp Trigger** — incoming customer message
-2. **AI Agent** — interprets intent (FAQ, order, inventory check)
-3. **Gemini Chat Model** — generates natural responses
-4. **Simple Memory** — maintains conversation context
-5. **Inventory Management** — checks live stock from Sheets
-6. **FAQ Retrieval** — answers common questions
-7. **Order Processing** — logs the order
-8. **WhatsApp Response** — sends confirmation back to the customer
+1. **WhatsApp Trigger** — incoming customer message kicks off the workflow
+2. **AI Agent** — the central brain that interprets intent and decides what to do next
+3. **Google Gemini Chat Model** — powers the AI Agent's language understanding and responses
+4. **Simple Memory** — keeps track of conversation context across messages
+5. **Get Inventory** *(reads Google Sheet)* — checks live stock before confirming an order
+6. **Get FAQ** *(reads Google Sheet)* — pulls answers to common restaurant questions
+7. **Post Orders** *(appends to Google Sheet)* — logs new orders automatically
+8. **Send Message** — the AI Agent's reply is sent back to the customer on WhatsApp
 
 ## 🎥 Demo
 
